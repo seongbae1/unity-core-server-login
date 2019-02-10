@@ -45,7 +45,7 @@ namespace DotnetCoreServer.Models
                         }
                     }
                 }
-                
+                conn.Close();
             }
             
             return list;
