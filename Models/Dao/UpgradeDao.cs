@@ -56,7 +56,7 @@ namespace DotnetCoreServer.Models
             UpgradeData data = new UpgradeData();
             using (MySqlConnection conn = db.GetConnection())
             {   
-                conn.Open();
+               // conn.Open();
                 string query = String.Format(
                     @"
                     SELECT 
@@ -82,7 +82,7 @@ namespace DotnetCoreServer.Models
                         }
                     }
                 }
-
+                conn.Close();
             }
             
             return null;
