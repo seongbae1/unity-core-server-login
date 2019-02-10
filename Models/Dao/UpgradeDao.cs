@@ -24,7 +24,7 @@ namespace DotnetCoreServer.Models
             using (MySqlConnection conn = db.GetConnection())
             {   
 
-                conn.Open();
+               // conn.Open();
                 string query = String.Format(
                     "SELECT upgrade_type, upgrade_level, upgrade_amount, upgrade_cost FROM tb_upgrade_info");
 
