@@ -72,7 +72,9 @@ namespace DotnetCoreServer.Models
 
                 Console.WriteLine(query);
 
-                MySqlCommand cmd =new MySqlCommand(query,conn);
+                using(MySqlCommand cmd =(MySqlCommand)conn.CreateCommand())
+                {
+                    cmd.CommandText=query;
                 using (MySqlDataReader reader = (MySqlDataReader)cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -99,7 +101,7 @@ namespace DotnetCoreServer.Models
                             
                         }
                     }
-                
+                }
                 
                 conn.Close();
             }
