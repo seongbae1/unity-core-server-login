@@ -20,7 +20,7 @@ namespace DotnetCoreServer.Controllers
         public UserResult Info(long UserID){
 
             UserResult result = new UserResult();
-            result.Data = userDao.GetUser(UserID);
+            result.Data = userDao.GetUser(UserID: UserID);
             return result;
 
         }
