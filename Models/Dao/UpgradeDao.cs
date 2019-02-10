@@ -26,7 +26,7 @@ namespace DotnetCoreServer.Models
 
                // conn.Open();
                 string query = String.Format(
-                    "SELECT upgrade_id, upgrade_type, upgrade_level, upgrade_amount, upgrade_cost FROM tb_upgrade_info");
+                    "SELECT upgrade_type, upgrade_level, upgrade_amount, upgrade_cost FROM tb_upgrade_info");
 
                 Console.WriteLine(query);
                 using(MySqlCommand cmd = (MySqlCommand)conn.CreateCommand())
