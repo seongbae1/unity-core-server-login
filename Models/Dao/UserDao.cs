@@ -24,6 +24,7 @@ namespace DotnetCoreServer.Models
             User user = new User();
             using(MySqlConnection conn = db.GetConnection())
             {   
+               // conn.Open();
                 string query = String.Format(
                     "SELECT user_id, facebook_id, facebook_name, facebook_photo_url, point, created_at, access_token FROM tb_user WHERE facebook_id = '{0}'",
                      FacebookID);
@@ -53,10 +54,11 @@ namespace DotnetCoreServer.Models
             return null;
         }
         
-        public User GetUser(long UserID){
+        public User GetUser(Int64 UserID){
             User user = new User();
             using(MySqlConnection conn = db.GetConnection())
             {   
+                //conn.Open();
                 string query = String.Format(
                     @"
                     SELECT 
@@ -72,9 +74,7 @@ namespace DotnetCoreServer.Models
 
                 Console.WriteLine(query);
 
-                using(MySqlCommand cmd =(MySqlCommand)conn.CreateCommand())
-                {
-                    cmd.CommandText=query;
+               MySqlCommand cmd = new MySqlCommand(query, conn);
                 using (MySqlDataReader reader = (MySqlDataReader)cmd.ExecuteReader())
                     {
                         if (reader.Read())
@@ -101,8 +101,8 @@ namespace DotnetCoreServer.Models
                             
                         }
                     }
-                }
                 
+            
                 conn.Close();
             }
             return user;

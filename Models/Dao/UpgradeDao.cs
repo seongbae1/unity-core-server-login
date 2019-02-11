@@ -72,7 +72,7 @@ namespace DotnetCoreServer.Models
                     cmd.CommandText = query;
                     using (MySqlDataReader reader = (MySqlDataReader)cmd.ExecuteReader())
                     {
-                        if (reader.Read())
+                        while (reader.Read())
                         {
                             data.UpgradeType = reader.GetString(0);
                             data.UpgradeLevel = reader.GetInt32(1);
